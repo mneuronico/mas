@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Casanchef",
+        "logo": "assets/casanchef - logo.png",
+        "example": "assets/casanchef - example.png",
+        "description": "A bot for Casancrem (the cream cheese company) that suggests recipes and ideas to cook based on requirements or pictures of whatever a user has in their fridge, through WhatsApp."
+    },
+    {
+        "name": "La IA del Brunch",
+        "logo": "assets/ia-del-brunch-logo.png",
+        "example": "assets/ia-del-brunch-example.png",
+        "description": "A bot available through a webpage that recommended places to go out and eat using the Google Places API."
+    },
+    {
+        "name": "NoticIAs dIArIAs",
+        "logo": "assets/NoticIAs dIArIAs - logo.png",
+        "example": "assets/NoticIAs dIArIAs - example.png",
+        "description": "A Telegram bot service that sends daily messages with AI news taken from YouTube videos, newsletters, and so on from the last 24 hours."
+    },
+    {
+        "name": "Personal Assistant",
+        "logo": "assets/personal assistant - logo.png",
+        "example": "assets/Personal Assistant - example.png",
+        "description": "A private service that can read and write on your Google Calendar, read and write on your Gmail, control your Spotify (play music, create playlists, etc), and transcribe audios, all through a simple Telegram bot with a complex multi-agent architecture behind it, running on MAWS."
+    }
+]

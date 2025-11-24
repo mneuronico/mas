@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAS - Multi-Agent System Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/mas-logo.png" alt="MAS Logo">
+                <span>MAS Library</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#maws">MAWS</a></li>
+                <li><a href="#examples">Success Cases</a></li>
+                <li><a href="#code">Code</a></li>
+                <li><a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank" class="btn-primary">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build Powerful <span class="highlight">Multi-Agent Systems</span> with Ease</h1>
+                <p class="tagline">A provider-independent, JSON-configurable framework for creating structured, intelligent agents.</p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank" class="btn-primary">Get Started</a>
+                    <a href="#about" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Abstract representation or code snippet visual could go here -->
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2>Meet the MAS Library</h2>
+            <p class="lead">Designed for developers and non-developers alike, MAS allows you to design complex multi-agent systems with minimal code.</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-cubes"></i>
+                    <h3>Structured Agents</h3>
+                    <p>Create agents that use tools in very specific ways, ensuring reliability and control.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Provider Independent</h3>
+                    <p>Seamlessly integrate with OpenAI, Google, Groq, Anthropic, DeepSeek, and local models.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-file-code"></i>
+                    <h3>JSON Configuration</h3>
+                    <p>Define your entire system in JSON. Readable by humans, writable by LLMs.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Auto-Generation</h3>
+                    <p>Describe your system in plain English, and let MAS generate the configuration for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section features">
+        <div class="container">
+            <h2>Core Capabilities</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3><i class="fab fa-whatsapp"></i> Native Bot Support</h3>
+                    <p>Out-of-the-box support for WhatsApp and Telegram bots. Deploy your agents to where your users are.</p>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-photo-video"></i> Multimodal</h3>
+                    <p>Handle text, images, and audio natively. The block-based system ensures seamless data exchange.</p>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-project-diagram"></i> Agentic Workflows</h3>
+                    <p>Design complex flows with Agents, Tools, Processes, and Automations. Support for branching, loops, and more.</p>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-database"></i> Centralized History</h3>
+                    <p>Robust message history management with SQLite, supporting multi-user sessions and context-aware agents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="maws" class="section maws">
+        <div class="container">
+            <div class="maws-content">
+                <div class="maws-text">
+                    <h2>MAWS Extension</h2>
+                    <h3>MAS on AWS</h3>
+                    <p>Deploy your MAS bots to AWS Lambda + API Gateway with almost no effort.</p>
+                    <ul class="maws-list">
+                        <li><i class="fas fa-check"></i> Lazy initialization for fast cold starts</li>
+                        <li><i class="fas fa-check"></i> Webhook handling for WhatsApp & Telegram</li>
+                        <li><i class="fas fa-check"></i> Background processing via self-invocation</li>
+                        <li><i class="fas fa-check"></i> DynamoDB locking & S3 synchronization</li>
+                    </ul>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/tree/main/maws" target="_blank" class="btn-primary">View MAWS Docs</a>
+                </div>
+                <div class="maws-logo">
+                    <img src="assets/maws-logo.png" alt="MAWS Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="examples" class="section examples">
+        <div class="container">
+            <h2>Success Cases</h2>
+            <p class="section-subtitle">Real-world applications built with MAS.</p>
+            <div id="examples-grid" class="examples-grid">
+                <!-- Examples will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="code" class="section code-showcase">
+        <div class="container">
+            <h2>Simple & Powerful</h2>
+            <div class="code-tabs">
+                <button class="tab-btn active" data-tab="python">main.py</button>
+                <button class="tab-btn" data-tab="json">config.json</button>
+                <button class="tab-btn" data-tab="fast-track">Fast Track</button>
+            </div>
+            <div class="code-content">
+                <div id="python" class="code-pane active">
+<pre><code class="language-python">from mas import AgentSystemManager
+
+# Initialize the manager
+manager = AgentSystemManager(config="config.json") 
+output = manager.run(input="Hello world!", verbose=True)
+
+print(output)
+# print(manager.show_history())
+</code></pre>
+                </div>
+                <div id="json" class="code-pane">
+<pre><code class="language-json">{
+    "general_parameters": {
+        "general_system_description": "A simple query system."
+    },
+    "components": [
+        {
+        "type": "agent",
+        "name": "simple_agent",
+        "system": "You are a basic assistant for answering questions.",
+        "required_outputs": {
+            "response": "A text response to be sent to the user."
+        }
+        }
+    ]
+}</code></pre>
+                </div>
+                <div id="fast-track" class="code-pane">
+<pre><code class="language-python">from mas import AgentSystemManager as ASM
+
+# Zero-Config Bootstrap: Just describe what you want!
+ASM("I want a system that gets a youtube video from a link sent by user, gets the transcript from that video, and summarizes it. Use google's gemini-2.0-flash model.").run("www.youtube.com/watch?v=some-video")
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="std-lib" class="section std-lib">
+        <div class="container">
+            <h2>Standard Library</h2>
+            <p>Ready-to-use tools included in <code>std.json</code></p>
+            <div class="tags-container">
+                <span class="tag">Google Places Search</span>
+                <span class="tag">YouTube Search</span>
+                <span class="tag">Calendar Search</span>
+                <span class="tag">MercadoPago Payment</span>
+                <span class="tag">Weather Search</span>
+                <span class="tag">Markdown to PDF</span>
+                <span class="tag">Google Docs Reader</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/mas-logo.png" alt="MAS Logo" style="height: 40px;">
+                    <span>MAS Library</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:mneuronico@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 Nicolas Martorell. MIT License.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
