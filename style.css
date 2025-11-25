@@ -179,7 +179,7 @@ ul {
 .hero-logo-3d {
     width: 300px;
     height: auto;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 16px rgba(100, 255, 218, 0.65));
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 7px rgba(100, 255, 218, 0.35));
     animation: rotate3d 6s infinite cubic-bezier(0.7, 0, 0.3, 1);
     transform-style: preserve-3d;
 }
@@ -337,7 +337,7 @@ ul {
 .maws-logo img {
     max-width: 100%;
     height: auto;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 14px rgba(100, 255, 218, 0.45));
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 6px rgba(100, 255, 218, 0.18));
     animation: rotate3d 6s infinite cubic-bezier(0.7, 0, 0.3, 1);
 }
 

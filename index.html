@@ -163,14 +163,17 @@
     <section id="code" class="section code-showcase">
         <div class="container">
             <h2>Simple & Powerful</h2>
-            <p class="install-note">Install via <code>pip install --upgrade git+https://github.com/mneuronico/multi-agent-system-library</code></p>
             <div class="code-tabs">
-                <button class="tab-btn active" data-tab="python">main.py</button>
+                <button class="tab-btn active" data-tab="install">Installation</button>
+                <button class="tab-btn" data-tab="python">main.py</button>
                 <button class="tab-btn" data-tab="json">config.json</button>
-                <button class="tab-btn" data-tab="fast-track">Fast Track</button>
+                <button class="tab-btn" data-tab="auto-mas">Auto-MAS</button>
             </div>
             <div class="code-content">
-                <div id="python" class="code-pane active">
+                <div id="install" class="code-pane active">
+                    <pre><code class="language-bash">pip install --upgrade git+https://github.com/mneuronico/multi-agent-system-library</code></pre>
+                </div>
+                <div id="python" class="code-pane">
                     <pre><code class="language-python">from mas import AgentSystemManager
 
 # Initialize the manager
@@ -198,7 +201,7 @@ print(output)
     ]
 }</code></pre>
                 </div>
-                <div id="fast-track" class="code-pane">
+                <div id="auto-mas" class="code-pane">
                     <pre><code class="language-python">from mas import AgentSystemManager as ASM
 
 # Zero-Config Bootstrap: Just describe what you want!
