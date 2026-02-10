@@ -52,6 +52,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+canvas,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -2740,5 +2748,12 @@ body {
 
     .install-box {
         font-size: 0.72rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .install-box code {
+        white-space: normal;
+        word-break: break-word;
     }
 }
