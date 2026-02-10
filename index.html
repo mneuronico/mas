@@ -4,244 +4,1044 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAS - Multi-Agent System Library</title>
+    <title>MAS — Multi-Agent System Library</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
             <a href="#" class="logo">
                 <img src="assets/mas-logo.png" alt="MAS Logo">
-                <span>MAS Library</span>
+                <span>MAS</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#zero-config">Auto-MAS</a></li>
+                <li><a href="#code">Quick Start</a></li>
                 <li><a href="#maws">MAWS</a></li>
-                <li><a href="#examples">Success Cases</a></li>
-                <li><a href="#code">Code</a></li>
-                <li><a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank"
-                        class="btn-primary">GitHub</a></li>
+                <li><a href="#examples">Cases</a></li>
             </ul>
+            <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank" class="nav-github-btn">
+                <i class="fab fa-github"></i> <span>Star on GitHub</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Build Powerful <span class="highlight">Multi-Agent Systems</span> with Ease</h1>
-                <p class="tagline">A provider-independent, JSON-configurable framework for creating structured,
-                    intelligent agents.</p>
-                <div class="hero-buttons">
-                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank"
-                        class="btn-primary">Get Started</a>
-                    <a href="#about" class="btn-secondary">Learn More</a>
+    <!-- ============ HERO ============ -->
+    <header class="hero" id="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge reveal">
+                <span class="badge-dot"></span> Open Source &middot; MIT License &middot; v0.3.3
+            </div>
+            <h1 class="reveal">
+                Build <span class="gradient-text">Multi-Agent Systems</span><br>
+                That Actually Work
+            </h1>
+            <p class="hero-sub reveal">
+                A Python framework to design, configure, and deploy intelligent multi-agent systems
+                with JSON configuration, provider independence, and zero-config bootstrapping.
+            </p>
+            <div class="hero-actions reveal">
+                <a href="#code" class="btn-glow">
+                    <i class="fas fa-rocket"></i> Quick Start
+                </a>
+                <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank" class="btn-outline">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="hero-install reveal">
+                <div class="install-box" id="installBox">
+                    <span class="install-prompt">$</span>
+                    <code>pip install --upgrade git+https://github.com/mneuronico/multi-agent-system-library</code>
+                    <button class="copy-btn" id="copyInstall" title="Copy to clipboard">
+                        <i class="fas fa-copy"></i>
+                    </button>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="assets/mas-logo.png" alt="MAS Logo" class="hero-logo-3d">
+            <div class="hero-stats reveal">
+                <div class="stat">
+                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-label">Component Types</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">LLM Providers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">Lines to Deploy</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-label">Built-in Tools</span>
+                </div>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </header>
 
-    <section id="about" class="section about">
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how-it-works" class="section section-dark">
         <div class="container">
-            <h2>Meet the MAS Library</h2>
-            <p class="lead">Designed for developers and non-developers alike, MAS allows you to design complex
-                multi-agent systems with minimal code.</p>
-            <div class="about-grid">
-                <div class="about-card">
-                    <i class="fas fa-cubes"></i>
-                    <h3>Structured Agents</h3>
-                    <p>Create agents that use tools in very specific ways, ensuring reliability and control.</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Provider Independent</h3>
-                    <p>Seamlessly integrate with OpenAI, Google, Groq, Anthropic, DeepSeek, and local models.</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-file-code"></i>
-                    <h3>JSON Configuration</h3>
-                    <p>Define your entire system in JSON. Readable by humans, writable by LLMs.</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Auto-Generation</h3>
-                    <p>Describe your system in plain English, and let MAS generate the configuration for you.</p>
-                </div>
+            <div class="section-header reveal">
+                <span class="section-tag">The Basics</span>
+                <h2>How It Works</h2>
+                <p>Three steps. That's all it takes to go from zero to a working multi-agent system.</p>
             </div>
-        </div>
-    </section>
 
-    <section id="features" class="section features">
-        <div class="container">
-            <h2>Core Capabilities</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <h3><i class="fab fa-whatsapp"></i> Native Bot Support</h3>
-                    <p>Out-of-the-box support for WhatsApp and Telegram bots. Deploy your agents to where your users
-                        are.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-photo-video"></i> Multimodal</h3>
-                    <p>Handle text, images, and audio natively. The block-based system ensures seamless data exchange.
-                    </p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-project-diagram"></i> Agentic Workflows</h3>
-                    <p>Design complex flows with Agents, Tools, Processes, and Automations. Support for branching,
-                        loops, and more.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-database"></i> Centralized History</h3>
-                    <p>Robust message history management with SQLite, supporting multi-user sessions and context-aware
-                        agents.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-tools"></i> Custom Tools</h3>
-                    <p>Easily extend agent capabilities with custom Python functions defined as tools.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-brain"></i> Long-term Memory</h3>
-                    <p>Built-in support for vector databases to give your agents persistent context and knowledge.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-user-secret"></i> Role-Playing</h3>
-                    <p>Define distinct personas and roles for each agent to specialize tasks and interactions.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-sync-alt"></i> Async Operations</h3>
-                    <p>Run heavy tasks in the background without blocking the main conversation flow.</p>
-                </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-chart-line"></i> Observability</h3>
-                    <p>Track agent performance, token usage, and costs with built-in logging and metrics.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="maws" class="section maws">
-        <div class="container">
-            <div class="maws-content">
-                <div class="maws-text">
-                    <h2>MAWS Extension</h2>
-                    <h3>MAS on AWS</h3>
-                    <p>Deploy your MAS bots to AWS Lambda + API Gateway with almost no effort.</p>
-                    <ul class="maws-list">
-                        <li><i class="fas fa-check"></i> Lazy initialization for fast cold starts</li>
-                        <li><i class="fas fa-check"></i> Webhook handling for WhatsApp & Telegram</li>
-                        <li><i class="fas fa-check"></i> Background processing via self-invocation</li>
-                        <li><i class="fas fa-check"></i> DynamoDB locking & S3 synchronization</li>
-                    </ul>
-                    <a href="https://github.com/mneuronico/multi-agent-system-library/tree/main/maws" target="_blank"
-                        class="btn-primary">View MAWS Docs</a>
-                </div>
-                <div class="maws-logo">
-                    <img src="assets/maws-logo.png" alt="MAWS Logo">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="examples" class="section examples">
-        <div class="container">
-            <h2>Success Cases</h2>
-            <p class="section-subtitle">Real-world applications built with MAS.</p>
-            <div id="examples-grid" class="examples-grid">
-                <!-- Examples will be loaded here via JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <section id="code" class="section code-showcase">
-        <div class="container">
-            <h2>Simple & Powerful</h2>
-            <div class="code-tabs">
-                <button class="tab-btn active" data-tab="install">Installation</button>
-                <button class="tab-btn" data-tab="python">main.py</button>
-                <button class="tab-btn" data-tab="json">config.json</button>
-                <button class="tab-btn" data-tab="auto-mas">Auto-MAS</button>
-            </div>
-            <div class="code-content">
-                <div id="install" class="code-pane active">
-                    <pre><code class="language-bash">pip install --upgrade git+https://github.com/mneuronico/multi-agent-system-library</code></pre>
-                </div>
-                <div id="python" class="code-pane">
-                    <pre><code class="language-python">from mas import AgentSystemManager
-
-# Initialize the manager
-manager = AgentSystemManager(config="config.json") 
-output = manager.run(input="Hello world!", verbose=True)
-
-print(output)
-# print(manager.show_history())
-</code></pre>
-                </div>
-                <div id="json" class="code-pane">
-                    <pre><code class="language-json">{
-    "general_parameters": {
-        "general_system_description": "A simple query system."
-    },
-    "components": [
-        {
-        "type": "agent",
-        "name": "simple_agent",
-        "system": "You are a basic assistant for answering questions.",
-        "required_outputs": {
-            "response": "A text response to be sent to the user."
-        }
-        }
-    ]
+            <div class="pipeline reveal">
+                <div class="pipeline-step" data-step="1">
+                    <div class="step-icon">
+                        <i class="fas fa-file-code"></i>
+                        <div class="step-pulse"></div>
+                    </div>
+                    <h3>1. Configure</h3>
+                    <p>Define your agents, tools, and workflows in a simple JSON file — or describe them in plain English.</p>
+                    <div class="step-code">
+                        <pre><code>{
+  "components": [{
+    "type": "agent",
+    "name": "assistant",
+    "system": "You help users."
+  }]
 }</code></pre>
+                    </div>
                 </div>
-                <div id="auto-mas" class="code-pane">
-                    <pre><code class="language-python">from mas import AgentSystemManager as ASM
 
-# Zero-Config Bootstrap: Just describe what you want!
-ASM("I want a system that gets a youtube video from a link sent by user, gets the transcript from that video, and summarizes it. Use google's gemini-2.0-flash model.").run("www.youtube.com/watch?v=some-video")
-</code></pre>
+                <div class="pipeline-arrow">
+                    <svg viewBox="0 0 60 24"><path d="M0 12h50M42 4l12 8-12 8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </div>
+
+                <div class="pipeline-step" data-step="2">
+                    <div class="step-icon">
+                        <i class="fas fa-play"></i>
+                        <div class="step-pulse"></div>
+                    </div>
+                    <h3>2. Run</h3>
+                    <p>Initialize the manager and send a message. MAS handles the LLM calls, history, and data flow.</p>
+                    <div class="step-code">
+                        <pre><code>from mas import AgentSystemManager
+
+manager = AgentSystemManager(
+    config="config.json"
+)
+output = manager.run("Hello!")</code></pre>
+                    </div>
+                </div>
+
+                <div class="pipeline-arrow">
+                    <svg viewBox="0 0 60 24"><path d="M0 12h50M42 4l12 8-12 8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </div>
+
+                <div class="pipeline-step" data-step="3">
+                    <div class="step-icon">
+                        <i class="fas fa-globe"></i>
+                        <div class="step-pulse"></div>
+                    </div>
+                    <h3>3. Deploy</h3>
+                    <p>Launch as a Telegram/WhatsApp bot with one method call, or deploy to AWS Lambda with MAWS.</p>
+                    <div class="step-code">
+                        <pre><code># Telegram bot — one line!
+manager.start_telegram_bot()
+
+# Or deploy to AWS Lambda
+# $ maws start
+# $ maws update</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pipeline-progress">
+                <div class="pipeline-track">
+                    <div class="data-packet" id="dataPacket"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="std-lib" class="section std-lib">
+    <!-- ============ ARCHITECTURE ============ -->
+    <section id="architecture" class="section">
         <div class="container">
-            <h2>Standard Library</h2>
-            <p>Ready-to-use tools included in <code>std.json</code></p>
-            <div class="tags-container">
-                <span class="tag">Google Places Search</span>
-                <span class="tag">YouTube Search</span>
-                <span class="tag">Calendar Search</span>
-                <span class="tag">MercadoPago Payment</span>
-                <span class="tag">Weather Search</span>
-                <span class="tag">Markdown to PDF</span>
-                <span class="tag">Google Docs Reader</span>
+            <div class="section-header reveal">
+                <span class="section-tag">Deep Dive</span>
+                <h2>The 4 Building Blocks</h2>
+                <p>Every MAS system is composed of four types of components that work together seamlessly.</p>
+            </div>
+
+            <div class="arch-diagram reveal">
+                <div class="arch-cards">
+                    <div class="arch-card active" data-component="agent">
+                        <div class="arch-card-icon agent-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Agent</h3>
+                        <p>LLM-powered reasoning nodes. They process conversation history, follow system prompts, and produce structured JSON outputs.</p>
+                        <div class="arch-card-detail">
+                            <span class="detail-tag">Input</span> Filtered message history
+                            <br><span class="detail-tag">Output</span> Structured JSON dict
+                        </div>
+                    </div>
+
+                    <div class="arch-card" data-component="tool">
+                        <div class="arch-card-icon tool-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Tool</h3>
+                        <p>Execute real-world actions — API calls, database queries, file operations. Agents decide what to call; Tools make it happen.</p>
+                        <div class="arch-card-detail">
+                            <span class="detail-tag">Input</span> Dict of keyword args
+                            <br><span class="detail-tag">Output</span> Dict of results
+                        </div>
+                    </div>
+
+                    <div class="arch-card" data-component="process">
+                        <div class="arch-card-icon process-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Process</h3>
+                        <p>Data transformation and loading. Processes access full message history for context-aware data manipulation.</p>
+                        <div class="arch-card-detail">
+                            <span class="detail-tag">Input</span> Full messages + manager
+                            <br><span class="detail-tag">Output</span> Dict
+                        </div>
+                    </div>
+
+                    <div class="arch-card" data-component="automation">
+                        <div class="arch-card-icon automation-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>Automation</h3>
+                        <p>Orchestrate components into complex workflows with branching, loops, and switch logic — like programming but in JSON.</p>
+                        <div class="arch-card-detail">
+                            <span class="detail-tag">Input</span> Passed to first component
+                            <br><span class="detail-tag">Output</span> Output of last component
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-sim" id="workflowSim">
+                    <div class="workflow-head">
+                        <h4>Constrained Workflow Simulation</h4>
+                        <p>The router makes a decision, but only inside fixed paths you define. Agents operate within strict guardrails.</p>
+                    </div>
+                    <div class="workflow-body">
+                        <div class="workflow-graph" id="workflowGraph">
+                            <div class="wf-row wf-main">
+                                <div class="wf-node wf-input" data-node="input">User Input</div>
+                                <div class="wf-edge"></div>
+                                <div class="wf-node wf-agent" data-node="router">Router Agent</div>
+                                <div class="wf-edge"></div>
+                                <div class="wf-node wf-decision" data-node="decision">Pick Path</div>
+                            </div>
+
+                            <div class="wf-lanes">
+                                <div class="wf-lane" data-lane="weather">
+                                    <div class="wf-lane-title">Weather Path</div>
+                                    <div class="wf-lane-steps">
+                                        <div class="wf-node wf-agent" data-node="weather-responder">First Responder</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-tool" data-node="weather-tool">Weather API</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-process" data-node="weather-cache">Cache Process</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="weather-formatter">Formatter Agent</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="weather-final">Final Responder</div>
+                                    </div>
+                                </div>
+                                <div class="wf-lane" data-lane="news">
+                                    <div class="wf-lane-title">News Path</div>
+                                    <div class="wf-lane-steps">
+                                        <div class="wf-node wf-agent" data-node="news-responder">First Responder</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-tool" data-node="news-tool">News API</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-process" data-node="news-summarize">Summarize Process</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="news-editor">Editor Agent</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="news-final">Final Responder</div>
+                                    </div>
+                                </div>
+                                <div class="wf-lane" data-lane="orders">
+                                    <div class="wf-lane-title">Orders Path</div>
+                                    <div class="wf-lane-steps">
+                                        <div class="wf-node wf-agent" data-node="orders-responder">First Responder</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-tool" data-node="orders-tool">Orders API</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-process" data-node="orders-db">DB Process</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="orders-check">Compliance Agent</div>
+                                        <div class="wf-edge vertical"></div>
+                                        <div class="wf-node wf-agent" data-node="orders-final">Final Responder</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="workflow-log-panel">
+                            <div class="wf-log-header">
+                                <span>Live Message Trace</span>
+                                <div class="wf-controls">
+                                    <span class="wf-loop" id="workflowStatus">Auto-playing</span>
+                                    <button class="wf-resume-btn" id="workflowResume" type="button">Resume</button>
+                                </div>
+                            </div>
+                            <div class="wf-log" id="workflowLog"></div>
+                            <div class="wf-constraint">
+                                <strong>Key idea:</strong> The router only selects among predefined paths. Agents cannot invent new steps — they execute the workflow you designed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ============ DATA FLOW — Block System ============ -->
+    <section id="data-flow" class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Under the Hood</span>
+                <h2>The Block System</h2>
+                <p>All data flows through a universal block format — text, images, and audio are first-class citizens.</p>
+            </div>
+
+            <div class="blocks-demo reveal">
+                <div class="block-flow">
+                    <div class="block-source">
+                        <h4>User Input</h4>
+                        <div class="input-types">
+                            <button class="input-type-btn active" data-type="text">
+                                <i class="fas fa-font"></i> Text
+                            </button>
+                            <button class="input-type-btn" data-type="image">
+                                <i class="fas fa-image"></i> Image
+                            </button>
+                            <button class="input-type-btn" data-type="audio">
+                                <i class="fas fa-microphone"></i> Audio
+                            </button>
+                        </div>
+                        <div class="input-preview" id="inputPreview">
+                            <div class="input-text active">"What's the weather like?"</div>
+                            <div class="input-image"><i class="fas fa-image"></i> photo.jpg</div>
+                            <div class="input-audio"><i class="fas fa-wave-square"></i> voice_note.ogg</div>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">
+                        <div class="flow-particles">
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                        </div>
+                        <span class="flow-label">_to_blocks()</span>
+                    </div>
+
+                    <div class="block-output" id="blockOutput">
+                        <h4>Universal Block</h4>
+                        <div class="block-json" id="blockJson">
+                            <pre><code>{
+  <span class="json-key">"type"</span>: <span class="json-str">"text"</span>,
+  <span class="json-key">"content"</span>: <span class="json-str">"What's the weather like?"</span>
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">
+                        <div class="flow-particles">
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                        </div>
+                        <span class="flow-label">SQLite DB</span>
+                    </div>
+
+                    <div class="block-db">
+                        <h4>Per-User History</h4>
+                        <div class="db-visual">
+                            <div class="db-row"><span class="db-role user">user</span> <span class="db-msg">What's the weather?</span></div>
+                            <div class="db-row"><span class="db-role assistant">agent</span> <span class="db-msg">Let me check...</span></div>
+                            <div class="db-row"><span class="db-role tool-role">tool</span> <span class="db-msg">{"temp": "22°C"}</span></div>
+                            <div class="db-row new-row"><span class="db-role assistant">agent</span> <span class="db-msg">It's 22°C and sunny!</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTROL FLOW ============ -->
+    <section id="control-flow" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Power Feature</span>
+                <h2>Control Flow in JSON</h2>
+                <p>Build sophisticated workflows with branching, loops, and switches — all defined declaratively.</p>
+            </div>
+
+            <div class="flow-demo reveal">
+                <div class="flow-visualization" id="flowViz">
+                    <div class="flow-controls">
+                        <button class="flow-btn active" data-flow="branch">
+                            <i class="fas fa-code-branch"></i> Branch
+                        </button>
+                        <button class="flow-btn" data-flow="switch">
+                            <i class="fas fa-random"></i> Switch
+                        </button>
+                        <button class="flow-btn" data-flow="loop">
+                            <i class="fas fa-redo"></i> Loop
+                        </button>
+                    </div>
+
+                    <div class="flow-diagram" id="flowDiagram">
+                        <!-- Branch diagram (default) -->
+                        <div class="flow-chart active" data-chart="branch">
+                            <div class="fc-node fc-start">Input</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-agent">Classifier</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-decision">
+                                <span>needs_tool?</span>
+                            </div>
+                            <div class="fc-branches">
+                                <div class="fc-branch fc-true">
+                                    <div class="fc-branch-label">true</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-agent">Tool Agent</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-tool">Execute</div>
+                                </div>
+                                <div class="fc-branch fc-false">
+                                    <div class="fc-branch-label">false</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-agent">Direct</div>
+                                </div>
+                            </div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-end">Output</div>
+                        </div>
+
+                        <!-- Switch diagram -->
+                        <div class="flow-chart" data-chart="switch">
+                            <div class="fc-node fc-start">Input</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-agent">Selector</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-decision">
+                                <span>action?</span>
+                            </div>
+                            <div class="fc-branches fc-multi">
+                                <div class="fc-branch">
+                                    <div class="fc-branch-label">weather</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-tool">Weather</div>
+                                </div>
+                                <div class="fc-branch">
+                                    <div class="fc-branch-label">news</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-tool">News</div>
+                                </div>
+                                <div class="fc-branch">
+                                    <div class="fc-branch-label">default</div>
+                                    <div class="fc-line"></div>
+                                    <div class="fc-node fc-agent">Fallback</div>
+                                </div>
+                            </div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-end">Output</div>
+                        </div>
+
+                        <!-- Loop diagram -->
+                        <div class="flow-chart" data-chart="loop">
+                            <div class="fc-node fc-start">Input</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-agent">Initializer</div>
+                            <div class="fc-line"></div>
+                            <div class="fc-loop-container">
+                                <div class="fc-loop-label"><i class="fas fa-redo"></i> while: !done</div>
+                                <div class="fc-node fc-agent">Worker</div>
+                                <div class="fc-line"></div>
+                                <div class="fc-node fc-tool">Process</div>
+                                <div class="fc-line"></div>
+                                <div class="fc-node fc-agent">Evaluator</div>
+                            </div>
+                            <div class="fc-line"></div>
+                            <div class="fc-node fc-end">Output</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-code-panel">
+                    <div class="code-frame">
+                        <div class="code-frame-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="code-filename">config.json</span>
+                        </div>
+                        <div class="flow-code-body">
+                            <div class="flow-code active" data-code="branch">
+                                <pre><code>{
+  <span class="json-key">"type"</span>: <span class="json-str">"automation"</span>,
+  <span class="json-key">"sequence"</span>: [
+    <span class="json-str">"classifier_agent"</span>,
+    {
+      <span class="json-key">"control_flow_type"</span>: <span class="json-str">"branch"</span>,
+    <span class="json-key">"condition"</span>: <span class="json-str">"needs_tool"</span>,
+      <span class="json-key">"if_true"</span>: [
+        <span class="json-str">"tool_agent"</span>,
+        <span class="json-str">"execute_tool"</span>
+      ],
+      <span class="json-key">"if_false"</span>: [
+        <span class="json-str">"direct_response"</span>
+      ]
+    },
+    <span class="json-str">"format_output"</span>
+  ]
+}</code></pre>
+                            </div>
+                            <div class="flow-code" data-code="switch">
+                                <pre><code>{
+  <span class="json-key">"type"</span>: <span class="json-str">"automation"</span>,
+  <span class="json-key">"sequence"</span>: [
+    <span class="json-str">"selector"</span>,
+    {
+      <span class="json-key">"control_flow_type"</span>: <span class="json-str">"switch"</span>,
+      <span class="json-key">"value"</span>: <span class="json-str">"action"</span>,
+      <span class="json-key">"cases"</span>: [
+        {<span class="json-key">"case"</span>: <span class="json-str">"weather"</span>,
+         <span class="json-key">"body"</span>: [<span class="json-str">"weather_tool"</span>]},
+        {<span class="json-key">"case"</span>: <span class="json-str">"news"</span>,
+         <span class="json-key">"body"</span>: [<span class="json-str">"news_tool"</span>]},
+        {<span class="json-key">"case"</span>: <span class="json-str">"default"</span>,
+         <span class="json-key">"body"</span>: [<span class="json-str">"fallback"</span>]}
+      ]
+    }
+  ]
+}</code></pre>
+                            </div>
+                            <div class="flow-code" data-code="loop">
+                                <pre><code>{
+  <span class="json-key">"type"</span>: <span class="json-str">"automation"</span>,
+  <span class="json-key">"sequence"</span>: [
+    <span class="json-str">"initializer"</span>,
+    {
+      <span class="json-key">"control_flow_type"</span>: <span class="json-str">"while"</span>,
+      <span class="json-key">"start_condition"</span>: <span class="json-str">"done == false"</span>,
+      <span class="json-key">"body"</span>: [
+        <span class="json-str">"worker"</span>,
+        <span class="json-str">"process_step"</span>,
+        <span class="json-str">"evaluator"</span>
+      ],
+      <span class="json-key">"end_condition"</span>: <span class="json-str">"done == true"</span>
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROVIDER INDEPENDENCE ============ -->
+    <section id="providers" class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Flexibility</span>
+                <h2>One Config. Any Provider.</h2>
+                <p>Switch between LLM providers without changing a single line of code. MAS auto-formats messages for each.</p>
+            </div>
+
+            <div class="providers-demo reveal">
+                <div class="provider-swap-demo">
+                    <div class="swap-code">
+                        <div class="code-frame">
+                            <div class="code-frame-header">
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                                <span class="code-filename">config.json</span>
+                            </div>
+                                                        <pre><code><span class="json-key">"default_models"</span>: [
+    <span class="provider-line" data-p="0">{ <span class="json-key">"provider"</span>: <span class="json-str">"openai"</span>, <span class="json-key">"model"</span>: <span class="json-str">"gpt-4o"</span> }</span>,
+    <span class="provider-line" data-p="1">{ <span class="json-key">"provider"</span>: <span class="json-str">"google"</span>, <span class="json-key">"model"</span>: <span class="json-str">"gemini-2.0-flash"</span> }</span>,
+    <span class="provider-line" data-p="2">{ <span class="json-key">"provider"</span>: <span class="json-str">"groq"</span>, <span class="json-key">"model"</span>: <span class="json-str">"llama-3.3-70b"</span> }</span>
+]</code></pre>
+                        </div>
+                        <div class="swap-explanation">
+                            <i class="fas fa-shield-alt"></i>
+                            <strong>Automatic fallback:</strong> If a provider fails, MAS seamlessly tries the next one in the chain. No error handling code needed.
+                        </div>
+                    </div>
+
+                    <div class="provider-orbit">
+                        <div class="orbit-center">
+                            <img src="assets/mas-logo.png" alt="MAS" class="orbit-logo">
+                        </div>
+                        <div class="orbit-ring">
+                            <div class="orbit-item" style="--i: 0"><span>OpenAI</span></div>
+                            <div class="orbit-item" style="--i: 1"><span>Google</span></div>
+                            <div class="orbit-item" style="--i: 2"><span>Groq</span></div>
+                            <div class="orbit-item" style="--i: 3"><span>Anthropic</span></div>
+                            <div class="orbit-item" style="--i: 4"><span>DeepSeek</span></div>
+                            <div class="orbit-item" style="--i: 5"><span>Local</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES BENTO GRID ============ -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Capabilities</span>
+                <h2>Everything You Need</h2>
+                <p>Built-in features that save you weeks of development time.</p>
+            </div>
+
+            <div class="features-bento reveal">
+                <div class="bento-item bento-large" data-feature="multimodal">
+                    <div class="bento-icon"><i class="fas fa-photo-video"></i></div>
+                    <h3>Multimodal by Default</h3>
+                    <p>Text, images, and audio are handled natively through the block system. Send a photo to an agent just like text.</p>
+                    <div class="bento-visual">
+                        <div class="modal-blocks">
+                            <div class="m-block text-block"><i class="fas fa-font"></i></div>
+                            <div class="m-block image-block"><i class="fas fa-image"></i></div>
+                            <div class="m-block audio-block"><i class="fas fa-headphones"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-item" data-feature="bots">
+                    <div class="bento-icon"><i class="fab fa-telegram"></i></div>
+                    <h3>Native Bots</h3>
+                    <p>Deploy to Telegram or WhatsApp with a single method call. STT, commands, and admin tools included.</p>
+                </div>
+
+                <div class="bento-item" data-feature="history">
+                    <div class="bento-icon"><i class="fas fa-database"></i></div>
+                    <h3>Smart History</h3>
+                    <p>Per-user SQLite databases with automatic message management, export/import, and context-aware filtering.</p>
+                </div>
+
+                <div class="bento-item bento-wide" data-feature="tools">
+                    <div class="bento-icon"><i class="fas fa-toolbox"></i></div>
+                    <h3>Standard Library</h3>
+                    <p>7 ready-to-use tools for common integrations.</p>
+                    <div class="std-tools-scroll">
+                        <div class="std-tool"><i class="fas fa-map-marker-alt"></i> Google Places</div>
+                        <div class="std-tool"><i class="fab fa-youtube"></i> YouTube</div>
+                        <div class="std-tool"><i class="fas fa-calendar"></i> Calendar</div>
+                        <div class="std-tool"><i class="fas fa-cloud-sun"></i> Weather</div>
+                        <div class="std-tool"><i class="fas fa-credit-card"></i> MercadoPago</div>
+                        <div class="std-tool"><i class="fas fa-file-pdf"></i> MD→PDF</div>
+                        <div class="std-tool"><i class="fab fa-google"></i> Google Docs</div>
+                    </div>
+                </div>
+
+                <div class="bento-item" data-feature="memory">
+                    <div class="bento-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Long-term Memory</h3>
+                    <p>Vector database support for persistent context and knowledge across sessions.</p>
+                </div>
+
+                <div class="bento-item" data-feature="async">
+                    <div class="bento-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Non-Blocking</h3>
+                    <p>Run heavy tasks in the background with <code>on_update</code> / <code>on_complete</code> callbacks.</p>
+                </div>
+
+                <div class="bento-item" data-feature="observability">
+                    <div class="bento-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Cost Tracking</h3>
+                    <p>Per-call USD cost calculation, usage logs, and <code>get_cost_report()</code> for full observability.</p>
+                </div>
+
+                <div class="bento-item" data-feature="roles">
+                    <div class="bento-icon"><i class="fas fa-users"></i></div>
+                    <h3>Role-Playing</h3>
+                    <p>Define distinct personas for each agent with system prompts and specialized behaviors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ZERO CONFIG (Auto-MAS) ============ -->
+    <section id="zero-config" class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Magic</span>
+                <h2>Zero-Config Bootstrap</h2>
+                <p>Describe what you want in plain English. MAS generates the entire system for you.</p>
+            </div>
+
+            <div class="auto-mas-demo reveal">
+                <div class="typewriter-container">
+                    <div class="typewriter-label">You type:</div>
+                    <div class="typewriter-box" id="typewriterBox">
+                        <span class="tw-text"></span><span class="tw-cursor">|</span>
+                    </div>
+                </div>
+
+                <div class="auto-mas-arrow">
+                    <div class="magic-sparkles">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <span>MAS auto-generates</span>
+                </div>
+
+                <div class="auto-mas-output">
+                    <div class="generated-files">
+                        <div class="gen-file" id="genConfig">
+                            <div class="gen-file-header">
+                                <i class="fas fa-file-code"></i> config.json
+                                <span class="gen-badge">Auto-generated</span>
+                            </div>
+                            <div class="gen-file-body">
+                                <pre><code id="genConfigCode"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auto-mas-code">
+                    <div class="code-frame">
+                        <div class="code-frame-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="code-filename">main.py</span>
+                        </div>
+                        <pre><code><span class="kw">from</span> mas <span class="kw">import</span> AgentSystemManager <span class="kw">as</span> ASM
+
+<span class="comment"># That's it. One line.</span>
+ASM(<span class="str">"I want a system that summarizes YouTube videos"</span>).run(
+    <span class="str">"www.youtube.com/watch?v=dQw4w9WgXcQ"</span>
+)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUICK START CODE ============ -->
+    <section id="code" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Get Started</span>
+                <h2>Up and Running in Minutes</h2>
+                <p>From installation to a working multi-agent system in 4 simple steps.</p>
+            </div>
+
+            <div class="quickstart reveal">
+                <div class="qs-steps">
+                    <div class="qs-step active" data-qs="install">
+                        <div class="qs-step-num">1</div>
+                        <div class="qs-step-text">
+                            <h4>Install</h4>
+                            <p>One pip command</p>
+                        </div>
+                    </div>
+                    <div class="qs-step" data-qs="config">
+                        <div class="qs-step-num">2</div>
+                        <div class="qs-step-text">
+                            <h4>Configure</h4>
+                            <p>Define your agents</p>
+                        </div>
+                    </div>
+                    <div class="qs-step" data-qs="run">
+                        <div class="qs-step-num">3</div>
+                        <div class="qs-step-text">
+                            <h4>Run</h4>
+                            <p>Execute your system</p>
+                        </div>
+                    </div>
+                    <div class="qs-step" data-qs="deploy">
+                        <div class="qs-step-num">4</div>
+                        <div class="qs-step-text">
+                            <h4>Deploy</h4>
+                            <p>Launch as a bot</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qs-code-panel">
+                    <div class="code-frame">
+                        <div class="code-frame-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="code-filename" id="qsFilename">terminal</span>
+                        </div>
+                        <div class="qs-code-body">
+                            <div class="qs-pane active" id="qs-install">
+                                <pre><code><span class="comment"># Install the library</span>
+<span class="prompt">$</span> pip install --upgrade git+https://github.com/mneuronico/multi-agent-system-library
+
+<span class="comment"># Set up your API key (choose your provider)</span>
+<span class="prompt">$</span> echo OPENAI_API_KEY=sk-... > .env
+<span class="comment"># or GOOGLE_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY, etc.</span></code></pre>
+                            </div>
+                            <div class="qs-pane" id="qs-config">
+                                <pre><code>{
+  <span class="json-key">"general_parameters"</span>: {
+    <span class="json-key">"general_system_description"</span>: <span class="json-str">"A helpful assistant."</span>
+  },
+  <span class="json-key">"components"</span>: [
+    {
+      <span class="json-key">"type"</span>: <span class="json-str">"agent"</span>,
+      <span class="json-key">"name"</span>: <span class="json-str">"router"</span>,
+      <span class="json-key">"system"</span>: <span class="json-str">"Classify user intent."</span>,
+      <span class="json-key">"required_outputs"</span>: {
+        <span class="json-key">"action"</span>: <span class="json-str">"'search' or 'chat'"</span>
+      },
+            <span class="json-key">"default_models"</span>: [
+                {<span class="json-key">"provider"</span>: <span class="json-str">"openai"</span>, <span class="json-key">"model"</span>: <span class="json-str">"gpt-4o-mini"</span>}
+            ]
+    },
+    {
+      <span class="json-key">"type"</span>: <span class="json-str">"agent"</span>,
+      <span class="json-key">"name"</span>: <span class="json-str">"responder"</span>,
+      <span class="json-key">"system"</span>: <span class="json-str">"You are a helpful assistant."</span>,
+      <span class="json-key">"required_outputs"</span>: {
+        <span class="json-key">"response"</span>: <span class="json-str">"Response to the user."</span>
+      }
+    }
+  ]
+}</code></pre>
+                            </div>
+                            <div class="qs-pane" id="qs-run">
+                                <pre><code><span class="kw">from</span> mas <span class="kw">import</span> AgentSystemManager
+
+<span class="comment"># Initialize with your config</span>
+manager = AgentSystemManager(config=<span class="str">"config.json"</span>)
+
+<span class="comment"># Run the system</span>
+output = manager.run(
+    input=<span class="str">"What is quantum computing?"</span>,
+    verbose=<span class="kw">True</span>
+)
+print(output)
+<span class="comment"># {'response': 'Quantum computing uses...'}</span></code></pre>
+                            </div>
+                            <div class="qs-pane" id="qs-deploy">
+                                <pre><code><span class="kw">from</span> mas <span class="kw">import</span> AgentSystemManager
+
+manager = AgentSystemManager(config=<span class="str">"config.json"</span>)
+
+<span class="comment"># Option A: Telegram bot (one line!)</span>
+manager.start_telegram_bot()
+
+<span class="comment"># Option B: WhatsApp bot</span>
+manager.start_whatsapp_bot()
+
+<span class="comment"># Option C: Deploy to AWS with MAWS</span>
+<span class="comment"># $ pip install maws</span>
+<span class="comment"># $ maws start && maws update</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAWS ============ -->
+    <section id="maws" class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Deployment</span>
+                <h2>MAWS — MAS on AWS</h2>
+                <p>Deploy your multi-agent systems to AWS Lambda with three commands.</p>
+            </div>
+
+            <div class="maws-demo reveal">
+                <div class="maws-flow">
+                    <div class="maws-step" data-maws="1">
+                        <div class="maws-step-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h4>Install</h4>
+                        <code>pip install maws</code>
+                    </div>
+                    <div class="maws-connector">
+                        <div class="connector-line"></div>
+                        <div class="connector-dot"></div>
+                    </div>
+                    <div class="maws-step" data-maws="2">
+                        <div class="maws-step-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h4>Initialize</h4>
+                        <code>maws start</code>
+                    </div>
+                    <div class="maws-connector">
+                        <div class="connector-line"></div>
+                        <div class="connector-dot"></div>
+                    </div>
+                    <div class="maws-step" data-maws="3">
+                        <div class="maws-step-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h4>Deploy</h4>
+                        <code>maws update</code>
+                    </div>
+                </div>
+
+                <div class="maws-infra">
+                    <div class="infra-diagram">
+                        <div class="infra-layer webhook-layer">
+                            <div class="infra-node">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </div>
+                            <div class="infra-node">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </div>
+                        </div>
+                        <div class="infra-arrow-down"><i class="fas fa-arrow-down"></i></div>
+                        <div class="infra-layer aws-layer">
+                            <div class="infra-node api-gw">
+                                <i class="fas fa-server"></i>
+                                <span>API Gateway</span>
+                            </div>
+                        </div>
+                        <div class="infra-arrow-down"><i class="fas fa-arrow-down"></i></div>
+                        <div class="infra-layer lambda-layer">
+                            <div class="infra-node lambda-node">
+                                <i class="fas fa-bolt"></i>
+                                <span>Lambda + MAS</span>
+                            </div>
+                        </div>
+                        <div class="infra-arrow-down"><i class="fas fa-arrow-down"></i></div>
+                        <div class="infra-layer storage-layer">
+                            <div class="infra-node">
+                                <i class="fas fa-database"></i>
+                                <span>DynamoDB</span>
+                            </div>
+                            <div class="infra-node">
+                                <i class="fas fa-hdd"></i>
+                                <span>S3</span>
+                            </div>
+                            <div class="infra-node">
+                                <i class="fas fa-key"></i>
+                                <span>SSM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="maws-features">
+                        <div class="maws-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Self-invocation to avoid API Gateway timeouts</span>
+                        </div>
+                        <div class="maws-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Per-user DynamoDB locking for safe concurrency</span>
+                        </div>
+                        <div class="maws-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>S3-based history sync per webhook call</span>
+                        </div>
+                        <div class="maws-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SSM Parameter Store for secure secrets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SUCCESS CASES ============ -->
+    <section id="examples" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Real World</span>
+                <h2>Built with MAS</h2>
+                <p>Real applications running in production, powered by MAS.</p>
+            </div>
+
+            <div id="examples-grid" class="examples-showcase reveal">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <div class="image-modal" id="imageModal" aria-hidden="true">
+        <div class="image-modal-backdrop"></div>
+        <div class="image-modal-content" role="dialog" aria-modal="true">
+            <button class="image-modal-close" id="imageModalClose" aria-label="Close preview">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="imageModalImg" alt="Example preview">
+            <div class="image-modal-caption" id="imageModalCaption"></div>
+        </div>
+    </div>
+
+    <!-- ============ CTA ============ -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to build your own<br><span class="gradient-text">Multi-Agent System?</span></h2>
+                <p>Start building in minutes. Open source, MIT licensed, and actively maintained.</p>
+                <div class="cta-actions">
+                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank" class="btn-glow">
+                        <i class="fab fa-github"></i> Get Started on GitHub
+                    </a>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/blob/main/README.md" target="_blank" class="btn-outline">
+                        <i class="fas fa-book"></i> Read the Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/mas-logo.png" alt="MAS Logo" style="height: 40px;">
-                    <span>MAS Library</span>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/mas-logo.png" alt="MAS Logo" class="footer-logo">
+                    <p>Multi-Agent System Library<br>by <a href="https://github.com/mneuronico" target="_blank">Nicolas Martorell</a></p>
                 </div>
-                <div class="footer-links">
-                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank"><i
-                            class="fab fa-github"></i> GitHub</a>
-                    <a href="mailto:mneuronico@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+                <div class="footer-col">
+                    <h4>Library</h4>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library" target="_blank">GitHub</a>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/blob/main/README.md" target="_blank">Documentation</a>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/tree/main/examples" target="_blank">Examples</a>
+                </div>
+                <div class="footer-col">
+                    <h4>MAWS</h4>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/tree/main/maws" target="_blank">MAWS Docs</a>
+                    <a href="https://github.com/mneuronico/multi-agent-system-library/tree/main/maws/README.md" target="_blank">Deploy Guide</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="mailto:mneuronico@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://github.com/mneuronico" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
-            <p class="copyright">&copy; 2025 Nicolas Martorell. MIT License.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nicolas Martorell &middot; MIT License</p>
+            </div>
         </div>
     </footer>
 
