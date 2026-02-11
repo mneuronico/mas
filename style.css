@@ -2727,6 +2727,22 @@ video {
     .wf-row {
         justify-content: flex-start;
     }
+
+    .step-code,
+    .workflow-log-panel,
+    .flow-code-panel,
+    .code-frame {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .step-code pre,
+    .workflow-log-panel pre,
+    .flow-code-panel pre,
+    .code-frame pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
 }
 
 @media (max-width: 480px) {
