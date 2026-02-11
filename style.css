@@ -983,6 +983,7 @@ video {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 280px;
     max-height: 280px;
     overflow-y: auto;
     padding-right: 4px;
@@ -2767,6 +2768,11 @@ video {
 
     .workflow-body {
         grid-template-columns: 1fr;
+    }
+
+    .wf-log {
+        height: 220px;
+        max-height: 220px;
     }
 
     .wf-lanes {
