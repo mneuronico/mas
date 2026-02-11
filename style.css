@@ -1897,6 +1897,9 @@ video {
     width: min(100%, 560px);
     text-align: left;
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tw-cursor {
@@ -2633,12 +2636,25 @@ video {
     }
 
     .qs-steps {
-        flex-direction: row;
-        overflow-x: auto;
+        flex-direction: column;
+        overflow: visible;
     }
 
     .qs-step {
-        min-width: 140px;
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+    }
+
+    .qs-step-text {
+        text-align: left;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .qs-step-text h4,
+    .qs-step-text p {
+        white-space: normal;
     }
 
     .examples-showcase {
@@ -2669,10 +2685,17 @@ video {
 
     .maws-flow {
         flex-direction: column;
+        gap: 24px;
     }
 
     .maws-connector {
         transform: rotate(90deg);
+        margin: 12px 0;
+    }
+
+    .maws-step {
+        width: 100%;
+        max-width: 340px;
     }
 
     .infra-diagram {

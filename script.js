@@ -439,6 +439,7 @@ function initAutoMASDemo() {
             if (entry.isIntersecting && !typewriterStarted) {
                 typewriterStarted = true;
                 startTypewriter();
+                observer.disconnect();
             }
         });
     }, { threshold: 0.3 });
